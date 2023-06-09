@@ -26,6 +26,26 @@ def add_movie():
         'msg': 'Some error occcured',
         'response': response
     }
+    
+
+
+@app.route('/movie/<int:id>', methods=['GET'])
+def get_movie(id):
+ response = db.get_item_to_movie_table(id)
+ 
+ if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        
+        if ('Item' in response):
+            return { 'Item': response['Item'] }
+
+        return { 'msg' : 'Item not found!' }
+
+ return {
+        'msg': 'Some error occured',
+        'response': response
+    }
+ 
+ 
  
 if __name__ == '__main__':
  app.run(debug=True,port=8080,host='0.0.0.0')
