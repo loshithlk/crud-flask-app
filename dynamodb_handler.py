@@ -85,7 +85,7 @@ def update_item_in_movie_table(id, data:dict):
 
 
 def delete_item_to_movie_table(id):
-    response = MovieTable.get_item(
+    response = MovieTable.delete_item(
         Key = {
             'id'     : id,
         }
