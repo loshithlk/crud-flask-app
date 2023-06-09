@@ -51,7 +51,17 @@ def update_movie(id):
  data = request.get_json()
  response = db.update_item_in_movie_table(id, data)
  
- return response
+ if (response['ResponseMetadata']['HTTPStatusCode'] == 200):
+        return {
+            'msg'                : 'Updated successfully',
+            'ModifiedAttributes' : response['Attributes'],
+            'response'           : response['ResponseMetadata']
+        }
+
+ return {
+        'msg'      : 'Some error occured',
+        'response' : response
+    }
  
 if __name__ == '__main__':
  app.run(debug=True,port=8080,host='0.0.0.0')
