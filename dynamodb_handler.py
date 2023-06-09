@@ -82,3 +82,12 @@ def update_item_in_movie_table(id, data:dict):
         ReturnValues = "UPDATED_NEW"  # returns the new updated
     )
     return response
+
+
+def delete_item_to_movie_table(id):
+    response = MovieTable.get_item(
+        Key = {
+            'id'     : id,
+        }
+    )
+    return response
