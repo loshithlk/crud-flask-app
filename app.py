@@ -45,7 +45,13 @@ def get_movie(id):
         'response': response
     }
  
+
+@app.route('/movie/<int:id>', methods=['PUT'])
+def update_movie(id): 
+ data = request.get_json()
+ response = db.update_item_in_movie_table(id, data)
  
+ return response
  
 if __name__ == '__main__':
  app.run(debug=True,port=8080,host='0.0.0.0')
