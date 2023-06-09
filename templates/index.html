@@ -62,7 +62,43 @@
             alert('Error');
         });
     });
+    
+    
+    
+    document.getElementById('myForm2').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var id = document.getElementById('id2').value;
+        
+        // Send DELETE request using fetch
+        fetch('/movie/'+ id, {
+            method: 'DELETE'
+        })
+        .then(function(response) {
+            console.log(id);
+            console.log('DELETE request successful');
+            alert('DELETE request successful');
+        })
+        .catch(function(error) {
+            console.log('Error:', error);
+            alert('Error');
+        });
+        
+    });
 </script>
+
+<br>
+<br>
+<br>
+<h2>Delete a movie by ID</h2>
+<form id="myForm2">
+    <input type="number" id="id2" name="id" placeholder="Id">
+    <button type="submit">Delete</button>
+</form>
+
+
+
+
+
 
 </body>
 </html>
