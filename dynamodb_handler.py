@@ -50,3 +50,14 @@ def add_item_to_movie_table(id, title, director):
         }
     )
     return response
+    
+def get_item_to_movie_table(id):
+    response = MovieTable.get_item(
+        Key = {
+            'id'     : id,
+        },
+        AttributesToGet = [
+            'title','director'
+            ]
+    )
+    return response
