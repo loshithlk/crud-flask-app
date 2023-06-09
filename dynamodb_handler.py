@@ -61,3 +61,24 @@ def get_item_to_movie_table(id):
             ]
     )
     return response
+    
+def update_item_in_movie_table(id, data:dict):
+    response = MovieTable.update_item(
+        Key = {
+           'id': id
+        },
+        AttributeUpdates={
+            
+            'title': {
+               'Value'  : data['title'],
+               'Action' : 'PUT' 
+            },
+            'director': {
+               'Value'  : data['director'],
+               'Action' : 'PUT'
+            }
+        },
+        
+        ReturnValues = "UPDATED_NEW"  # returns the new updated
+    )
+    return response
